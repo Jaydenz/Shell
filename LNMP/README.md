@@ -41,6 +41,8 @@ Systemd脚本名：mysql.service
 ## 测试环境
 Ubuntu18.04
 
+Ubuntu16.04
+
 CentOS 7-1708
 
 ## 更新地址
