@@ -57,7 +57,7 @@ install_nginx(){
 			exit 5
 		fi
 	else
-		apt-get install -y openssl libssl-dev  libpcre3 libpcre3-dev fizlib1g-dev  
+		apt-get install -y openssl libssl-dev  libpcre3 libpcre3-dev   
 		if [[ ! $? = 0 ]]; then
 			echo 'Error:安装依赖失败了哦！'
 			exit 5
