@@ -73,6 +73,8 @@ install_nginx(){
 	chown -R nginx:nginx /usr/local/nginx
 	cd $DIR
 	echo -e '[Unit]\nDescription=Nginx\nAfter=network.target\n[Service]\nType=forking\nPIDFile=/usr/local/nginx/logs/nginx.pid\nExecStart=/usr/local/nginx/sbin/nginx\nExecReload=/usr/local/nginx/sbin/nginx -s reload\nExecStop=/usr/local/nginx/sbin/nginx -s stop\nPrivateTmp=true\n[Install]\nWantedBy=multi-user.target' > $SYSTEMDIR/nginx.service
+	echo "export PATH=$PATH:/usr/local/nginx/sbin/" >> /etc/profile
+	source /etc/profile
 	systemctl daemon-reload && systemctl enable nginx && systemctl start nginx
 }
 
@@ -140,6 +142,7 @@ install_php(){
 	make && make install
 	chown -R nginx:nginx /usr/local/php
 	echo "export PATH=$PATH:/usr/local/php/bin" >> /etc/profile
+	source /etc/profile
 	cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 	cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 
